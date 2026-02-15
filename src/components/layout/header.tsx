@@ -8,28 +8,62 @@ import { useEffect, useState } from 'react'
 import { User as SupabaseUser } from '@supabase/supabase-js'
 import { User, LogOut, Menu, X, ChevronRight } from 'lucide-react'
 
+
 export default function Header() {
   const [user, setUser] = useState<SupabaseUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false) // State to track mobile menu toggle
   const router = useRouter()
   const supabase = createClient()
+  const [isAdmin, setIsAdmin] = useState(false)
+
 
   useEffect(() => {
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      setUser(user)
-      setLoading(false)
+  const getUserAndRole = async () => {
+    setLoading(true)
+
+    const { data: { user } } = await supabase.auth.getUser()
+    setUser(user ?? null)
+
+    if (user) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single()
+
+      setIsAdmin(profile?.role === 'admin')
+    } else {
+      setIsAdmin(false)
     }
 
-    getUser()
+    setLoading(false)
+  }
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null)
-    })
+  getUserAndRole()
 
-    return () => subscription.unsubscribe()
-  }, [supabase.auth])
+  const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    const nextUser = session?.user ?? null
+    setUser(nextUser)
+
+    if (nextUser) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', nextUser.id)
+        .single()
+
+      setIsAdmin(profile?.role === 'admin')
+    } else {
+      setIsAdmin(false)
+    }
+
+    setLoading(false)
+  })
+
+  return () => subscription.unsubscribe()
+}, [supabase])
+
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()
@@ -43,6 +77,7 @@ export default function Header() {
     { name: 'Jobs', href: '/opportunities' },
     { name: 'Academy', href: '/learning' },
     { name: 'Donate', href: '/donate' },
+    ...(isAdmin ? [{ name: 'Admin', href: '/admin' }] : []),
   ]
 
   return (
