@@ -15,7 +15,7 @@ export default function ChatWidget() {
 
   const canSend = useMemo(() => input.trim().length > 0 && !loading, [input, loading])
 
-  const send = async () => {
+const send = async () => {
   const text = input.trim()
   if (!text || loading) return
 
@@ -34,12 +34,18 @@ export default function ChatWidget() {
       }),
     })
 
-    const data = await res.json()
-    const replyText: string = data?.text || "Sorry — I couldn’t respond right now."
+    const data = await res.json().catch(() => ({}))
 
+    if (!res.ok) {
+      const msg = data?.error || `Server error (${res.status})`
+      setMessages([...next, { role: 'assistant', content: msg }])
+      return
+    }
+
+    const replyText: string = data?.text || "No response returned."
     setMessages([...next, { role: 'assistant', content: replyText }])
-  } catch {
-    setMessages([...next, { role: 'assistant', content: "Network issue — please try again." }])
+  } catch (err: any) {
+    setMessages([...next, { role: 'assistant', content: `Network error: ${err?.message || 'request failed'}` }])
   } finally {
     setLoading(false)
   }
