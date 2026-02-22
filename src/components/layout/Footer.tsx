@@ -48,10 +48,11 @@ export default function Footer() {
               Contact Us
             </h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>UNESWA, Kwaluseni</li>
+              <li>Murray St, Mbabane</li>
               <li>Eswatini</li>
               <li className="pt-2 text-white">+268 7636 8299</li>
-              <li className="text-yellow-500">support@enactus.sz</li>
+              <li className="pt-2 text-white">+268 7833 6348</li>
+              <li className="text-yellow-500">tddlamini@enactus.org</li>
             </ul>
           </div>
         </div>
