@@ -47,27 +47,27 @@ export default function SignUpPage() {
         
         <div className="relative z-10">
           <Link href="/" className="text-2xl font-black text-white tracking-tighter uppercase">
-            Enactus<span className="text-yellow-500">Remote</span>
+            Enactus<span className="text-yellow-500">Eswatini</span>
           </Link>
         </div>
 
         <div className="relative z-10 max-w-md">
           <h2 className="text-5xl font-black text-white mb-8 leading-tight">
-            Start Your <br />
-            <span className="text-yellow-500 text-6xl">Global Journey.</span>
+            Join the <br />
+            <span className="text-yellow-500 text-6xl">Youth Hub.</span>
           </h2>
           <div className="space-y-6">
             <div className="flex gap-4">
               <div className="mt-1 h-6 w-6 rounded-full bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
                 <CheckCircle2 size={16} className="text-yellow-500" />
               </div>
-              <p className="text-slate-400 font-medium">Access verified remote job leads from global markets.</p>
+              <p className="text-slate-400 font-medium">Connect with youth, mentors, and community projects in Eswatini.</p>
             </div>
             <div className="flex gap-4">
               <div className="mt-1 h-6 w-6 rounded-full bg-yellow-500/20 flex items-center justify-center flex-shrink-0">
                 <CheckCircle2 size={16} className="text-yellow-500" />
               </div>
-              <p className="text-slate-400 font-medium">Earn industry-recognized certifications to boost your CV.</p>
+              <p className="text-slate-400 font-medium">Learn with MTN Digital Skills Academy and track your progress.</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function SignUpPage() {
         <div className="w-full max-w-md">
           <div className="mb-10 text-center lg:text-left">
             <h1 className="text-4xl font-black text-slate-900 mb-3 tracking-tight">Create Account</h1>
-            <p className="text-slate-500 font-medium">Join Eswatini's fastest growing digital workforce.</p>
+            <p className="text-slate-500 font-medium">Join the Enactus Eswatini youth community.</p>
           </div>
 
           {error && (

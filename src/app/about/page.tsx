@@ -32,13 +32,19 @@ export default function AboutPage() {
               <h2 className="mb-6 text-3xl font-bold text-slate-900 sm:text-4xl">Who We Are</h2>
               <div className="space-y-6 text-lg leading-relaxed text-slate-600">
                 <p>
-                  Enactus Remote is an initiative by <span className="font-semibold text-slate-900">Enactus Eswatini</span> designed to address the high youth unemployment rate in our country. We believe that talent is universal, but opportunity is not.
+                  The <span className="font-semibold text-slate-900">Enactus Eswatini Youth Hub</span> is a community initiative
+                  built to support young people across Eswatini with digital skills, mentorship, and pathways into opportunities.
+                  We believe talent is universal — and we’re building local access to learning, networks, and real project
+                  experience.
                 </p>
                 <p>
-                  Founded in 2024 at the University of Eswatini, our platform connects young professionals with international employers, provides industry-recognized training, and builds a sustainable ecosystem for digital work in Southern Africa.
+                  Started at the University of Eswatini, this platform brings together students, graduates, and young creators
+                  who want to learn, collaborate, and grow. From digital skills to community projects, we’re focused on helping
+                  youth build momentum.
                 </p>
                 <p>
-                  We work with local communities, international partners, and government agencies to ensure that every young person in Eswatini has access to the tools they need to build successful remote careers.
+                  We work with partners like MTN, community leaders, and local organizations to expand access to training and
+                  create a supportive youth ecosystem.
                 </p>
               </div>
             </div>

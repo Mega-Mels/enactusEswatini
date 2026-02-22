@@ -2,6 +2,13 @@
 
 import Link from 'next/link'
 import { Calendar, Users, ArrowRight, DollarSign, Briefcase, ExternalLink } from 'lucide-react'
+import jobDefault from "@/assets/jobs/job_default.jpg";
+import jobTech from "@/assets/jobs/job_tech.jpg";
+import jobBusiness from "@/assets/jobs/job_business.jpg";
+import jobCreative from "@/assets/jobs/job_creative.jpg";
+import jobCommunity from "@/assets/jobs/job_community.jpg";
+import jobRemote from "@/assets/jobs/job_remote.jpg";
+import Image from 'next/image'
 
 type JobCardProps = {
   id: string
@@ -9,15 +16,27 @@ type JobCardProps = {
   company: string
   description: string
   category: string
-  job_type: string | null
+  type: string | null
   salary_range: string
   application_count: number
   created_at: string
   application_url?: string // Added for direct links
 }
+function getJobImage(job: any) {
+  const category = (job.category ?? '').toLowerCase()
+  const type = (job.type ?? '').toLowerCase()
 
+  if (type.includes('remote')) return jobRemote
+  if (type.includes('contract')) return jobDefault // or jobBusiness if you prefer
+
+  if (category.includes('tech')) return jobTech
+  if (category.includes('business')) return jobBusiness
+  if (category.includes('creative')) return jobCreative
+  if (category.includes('community')) return jobCommunity
+  return jobDefault
+}
 export default function JobCard({ 
-  id, title, company, description, category, job_type, salary_range, application_count, created_at, application_url 
+  id, title, company, description, category, type, salary_range, application_count, created_at, application_url 
 }: JobCardProps) {
 
   const getTypeColor = (type: string | null) => {
@@ -40,6 +59,7 @@ export default function JobCard({
   return (
     <div className="bg-white border border-slate-200 rounded-[2rem] p-6 shadow-sm hover:shadow-xl hover:border-yellow-400/50 transition-all duration-300 group flex flex-col justify-between h-full">
       <div>
+        
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-yellow-50 group-hover:text-yellow-600 transition-colors">
@@ -59,10 +79,17 @@ export default function JobCard({
             {application_count || 0}
           </div>
         </div>
-
+          <div className="mb-5 overflow-hidden rounded-2xl border border-slate-100">
+          <Image
+            src={getJobImage({ category, type })}
+            alt="Job cover"
+            className="h-32 w-full object-cover"
+            priority={false}
+          />
+</div>
         <div className="flex flex-wrap gap-2 mb-4">
-          <span className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${getTypeColor(job_type)}`}>
-            {job_type || 'Full-time'}
+          <span className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${getTypeColor(type)}`}>
+            {type || 'Full-time'}
           </span>
           <span className="px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest bg-slate-50 text-slate-500 border border-slate-100">
             {category}

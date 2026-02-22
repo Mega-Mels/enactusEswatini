@@ -42,18 +42,18 @@ export default function LoginPage() {
         {/* Branding */}
         <div className="relative z-10">
           <Link href="/" className="text-2xl font-black text-white tracking-tighter uppercase">
-            Enactus<span className="text-yellow-500">Remote</span>
+            Enactus<span className="text-yellow-500">Eswatini</span>
           </Link>
         </div>
 
         {/* Value Proposition */}
         <div className="relative z-10 max-w-md">
           <h2 className="text-5xl font-black text-white mb-6 leading-tight">
-            The Gateway to <br />
-            <span className="text-yellow-500 text-6xl">Global Talent.</span>
+            Your space to <br />
+            <span className="text-yellow-500 text-6xl">learn & grow.</span>
           </h2>
           <p className="text-slate-400 text-lg font-medium leading-relaxed">
-            Securely access your account to manage your certifications and explore curated job leads for the Swati digital workforce.
+            Securely access your account to manage your learning progress and connect with the Enactus Eswatini youth community.
           </p>
         </div>
 

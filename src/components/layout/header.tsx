@@ -74,8 +74,8 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Jobs', href: '/opportunities' },
-    { name: 'Academy', href: '/learning' },
+    { name: 'Opportunities', href: '/opportunities' },
+    { name: 'E-Learning', href: '/learning' },
     { name: 'Donate', href: '/donate' },
     ...(isAdmin ? [{ name: 'Admin', href: '/admin' }] : []),
   ]
@@ -89,7 +89,7 @@ export default function Header() {
           <Link href="/" className="flex items-center">
             <Image 
               src="/images/logo.png" 
-              alt="Enactus Remote Logo"
+              alt="Enactus Eswatini"
               width={80}
               height={40}
               priority

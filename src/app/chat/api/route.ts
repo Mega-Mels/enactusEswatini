@@ -8,9 +8,11 @@ const client = new OpenAI({
   defaultHeaders: {
     // Optional but recommended by OpenRouter:
     // Put your deployed site URL here (or your Vercel preview URL)
-    "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL || "https://enactus-remote.vercel.app/",
+    // NOTE: keep a safe default referrer in case NEXT_PUBLIC_SITE_URL is not set.
+    // Branding: replace "enactus-remote" with "enactus".
+    "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL || "https://enactus.vercel.app/",
     // Your app name
-    "X-Title": "Enactus Remote",
+    "X-Title": "Enactus",
   },
 });
 
@@ -33,7 +35,7 @@ export async function POST(req: Request) {
         {
           role: "system",
           content:
-            "You are Enactus Remote's helpful assistant. Be concise and practical. Help users navigate opportunities, learning, and donations. If unsure, ask one clarifying question.",
+            "You are Enactus' helpful assistant. Be concise and practical. Help users navigate opportunities, learning, and donations. If unsure, ask one clarifying question.",
         },
         ...messages,
       ],

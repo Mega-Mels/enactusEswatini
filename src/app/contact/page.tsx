@@ -54,7 +54,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-bold text-slate-900">Email</p>
-                    <p className="text-sm text-slate-500">support@enactusremote.sz</p>
+                    <p className="text-sm text-slate-500">support@enactus.sz</p>
                   </div>
                 </div>
 
@@ -109,7 +109,7 @@ export default function ContactPage() {
               },
               { 
                 q: "How can my company post jobs?", 
-                a: "Contact us through this form or email us at support@enactusremote.sz to discuss partnership opportunities." 
+                a: "Contact us through this form or email us at support@enactus.sz to discuss partnership opportunities." 
               },
               { 
                 q: "Do I need to be in Eswatini to use this platform?", 

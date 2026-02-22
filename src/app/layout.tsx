@@ -8,8 +8,9 @@ import ChatWidget from '@/components/chat/ChatWidget'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Enactus Remote - Connecting Swati Youth to Global Opportunities',
-  description: 'Remote work platform for Eswatini youth. Find jobs, learn skills, and build a sustainable digital career.',
+  title: 'Enactus Eswatini Youth Hub',
+  description:
+    "A youth community for Eswatini — learn with MTN Digital Skills Academy, connect with mentors, explore opportunities, and support impact through MTN MoMo.",
 }
 
 export default function RootLayout({
@@ -21,12 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Header />
-        
-        {/* main tag ensures the content expands to push the footer down */}
-        <main className="flex-grow">
-          {children}
-        </main>
-      <ChatWidget />
+
+        <main className="flex-grow">{children}</main>
+
+        <ChatWidget />
         <Footer />
       </body>
     </html>

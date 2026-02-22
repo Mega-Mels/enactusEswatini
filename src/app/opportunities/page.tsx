@@ -15,10 +15,30 @@ type Job = {
   description: string
   category: string
   job_type: string
+  type: string | null
+  location: string
+  resource_url: string
   salary_range: string
   application_count: number
   created_at: string
 }
+
+<div className="mt-6 grid gap-4 md:grid-cols-3">
+  <a className="rounded-2xl border p-5 hover:shadow" href="https://www.linkedin.com/jobs/" target="_blank" rel="noreferrer">
+    <div className="font-bold">LinkedIn Jobs</div>
+    <div className="text-sm opacity-80">Search “Eswatini” + filters</div>
+  </a>
+
+  <a className="rounded-2xl border p-5 hover:shadow" href="https://www.indeed.com/" target="_blank" rel="noreferrer">
+    <div className="font-bold">Indeed</div>
+    <div className="text-sm opacity-80">Local + international roles</div>
+  </a>
+
+  <a className="rounded-2xl border p-5 hover:shadow" href="https://remoteok.com/" target="_blank" rel="noreferrer">
+    <div className="font-bold">RemoteOK</div>
+    <div className="text-sm opacity-80">Remote roles (tech + more)</div>
+  </a>
+</div>
 
 export default function OpportunitiesPage() {
   
@@ -28,6 +48,9 @@ export default function OpportunitiesPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(true)
   const supabase = createClient()
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+
+  
 
   useEffect(() => {
     fetchJobs()
@@ -35,15 +58,40 @@ export default function OpportunitiesPage() {
 
   useEffect(() => {
     let result = jobs
-    if (activeFilter !== 'all') {
-      result = result.filter(job => job.category.toLowerCase() === activeFilter.toLowerCase())
+
+    if (selectedTypes.length > 0) {
+  const set = new Set(selectedTypes.map(t => t.toLowerCase()))
+  result = result.filter(job => set.has((job.type ?? '').toLowerCase()))
+}
+
+type JobFilterProps = {
+  activeFilter: string
+  onFilterChange: (filter: string) => void
+  selectedTypes: string[]
+  onToggleType: (type: string) => void
+}
+
+
+
+    if (activeFilter !== "all") {
+      const filter = activeFilter.toLowerCase();
+      result = result.filter((job) => (job.category ?? "").toLowerCase() === filter);
     }
     if (searchQuery) {
-      result = result.filter(job => 
-        job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.company.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    }
+  const q = searchQuery.toLowerCase();
+  result = result.filter((job) =>
+    [
+      job.title ?? "",
+      job.company ?? "",
+      //job.location ?? "",
+      job.category ?? "",
+      //job.type ?? "",
+    ]
+      .join(" ")
+      .toLowerCase()
+      .includes(q)
+  );
+}
     setFilteredJobs(result)
   }, [activeFilter, searchQuery, jobs])
 
@@ -79,7 +127,7 @@ export default function OpportunitiesPage() {
             Global <span className="text-yellow-500">Opportunities.</span>
           </h1>
           <p className="text-lg text-slate-400 max-w-xl mx-auto font-medium">
-            Curated remote and local roles specifically for Eswatini's growing digital workforce.
+            Curated internships, volunteering, and career opportunities for young people in Eswatini.
           </p>
         </div>
       </div>

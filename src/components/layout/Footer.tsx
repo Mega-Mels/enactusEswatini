@@ -10,9 +10,9 @@ export default function Footer() {
           
           {/* About Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">Enactus Remote</h3>
+            <h3 className="text-xl font-bold">Enactus Eswatini</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Connecting Swati youth to global remote work opportunities and building a sustainable digital future.
+              Connecting Swati youth to skills hoaning opportunities job opportunities and youth empowerment community.
             </p>
           </div>
 
@@ -51,14 +51,14 @@ export default function Footer() {
               <li>UNESWA, Kwaluseni</li>
               <li>Eswatini</li>
               <li className="pt-2 text-white">+268 7636 8299</li>
-              <li className="text-yellow-500">support@enactusremote.sz</li>
+              <li className="text-yellow-500">support@enactus.sz</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-500 text-sm">
-            © 2026 Enactus Remote - An Enactus Eswatini Initiative
+            © 2026 Enactus Eswatini Youth Hub
           </p>
         </div>
       </div>

@@ -158,7 +158,7 @@ export default async function JobDetailPage({ params }: PageProps) {
                   </div>
                   <h3 className="text-xl font-black text-slate-900 mb-3 tracking-tight">Join the Network</h3>
                   <p className="text-sm text-slate-500 font-medium mb-8 leading-relaxed">
-                    You must be a member of the Enactus Remote community to apply for this lead.
+                    You must be a member of the Enactus Eswatini Youth Hub to apply for this opportunity.
                   </p>
                   <div className="space-y-4">
                     <Link 

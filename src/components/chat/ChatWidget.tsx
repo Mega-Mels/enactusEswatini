@@ -10,7 +10,7 @@ export default function ChatWidget() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [messages, setMessages] = useState<Msg[]>([
-    { role: 'assistant', content: "Hi! I’m the Enactus Remote assistant. What do you want to do—find opportunities, explore courses, or learn about donations?" },
+    { role: 'assistant', content: "Hi! I’m the Enactus Eswatini Youth Hub assistant. What would you like to do—start learning, explore opportunities, or donate via MTN MoMo?" },
   ])
 
   const canSend = useMemo(() => input.trim().length > 0 && !loading, [input, loading])
@@ -68,7 +68,7 @@ const send = async () => {
         <div className="fixed bottom-20 right-5 z-[60] w-[92vw] max-w-md rounded-[2rem] border border-slate-200 bg-white shadow-2xl overflow-hidden">
           <div className="bg-slate-900 text-white px-6 py-4">
             <p className="text-[10px] font-black uppercase tracking-widest text-yellow-500">AI Assistant</p>
-            <p className="font-black tracking-tight">Enactus Remote Help</p>
+            <p className="font-black tracking-tight">Enactus Youth Hub Help</p>
           </div>
 
           <div className="p-4 max-h-[52vh] overflow-y-auto space-y-3 bg-slate-50">

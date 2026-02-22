@@ -121,7 +121,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   <div className="mb-8 rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-6">
                     <ShieldCheck className="mx-auto mb-3 text-slate-300" size={32} />
                     <p className="text-xs font-bold text-slate-600 leading-relaxed">
-                      Enactus Remote members get priority access to this certification.
+                      Enactus Eswatini Youth Hub members get priority access to this certification.
                     </p>
                   </div>
                   <div className="flex flex-col gap-4">
